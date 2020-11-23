@@ -27,8 +27,10 @@ $("#btn-user-changepassword").click(function () {
     }).done(function () {
         $("#user-changepassword-oldpassword").val("");
         $("#user-changepassword-newpassword").val("");
+        localStorage.setItem("data-breached", false);
         $("#user-changepassword-message").text("Password successfully changed.");
         $("#user-changepassword-message").attr("class", "success-message");
+        window.location.replace("Profile");
     });
 });
 
@@ -52,8 +54,10 @@ $("#btn-user-setpassword").click(function () {
         }
     }).done(function () {
         $("#user-setpassword-password").val("");
+        localStorage.setItem("data-breached", false);
         $("#user-setpassword-message").text("Password successfully changed.");
         $("#user-setpassword-message").attr("class", "success-message");
+        window.location.replace("Profile");
     });
 });
 
@@ -353,6 +357,11 @@ let profileUpdate = function() {
         $("#user-updateaccount-firstname").val(ret.FirstName);
         $("#user-updateaccount-lastname").val(ret.LastName);
         $("#user-updateaccount-about").val(ret.About);
+        if (localStorage.getItem("data-breached")=="true") {
+            $("#profile-message").text("We have found your email id in data breaches happened on some external sites. We advise you to reset your password.");
+            $("#profile-message").attr("class", "error-message");
+        }
+
     });
 }
 
