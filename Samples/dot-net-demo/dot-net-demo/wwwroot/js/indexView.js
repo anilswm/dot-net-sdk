@@ -37,6 +37,10 @@ $(function () {
             // Reset Password page.
             '#resetpassword': function () {
                 renderResetPassword();
+            },
+            //Settings page.
+            '#settings': function () {
+                renderSettings();
             }
         };
 
@@ -78,5 +82,13 @@ $(function () {
         let page = $('.resetpassword-elem')
         page.addClass('visible');
         // Shows the reset password page.
+    }
+
+    function renderSettings() {
+        let page = $('.settings-elem')
+        let menuOption = $('#menu-settings')
+        page.addClass('visible');
+        menuOption.addClass('active');
+        // Shows the forgot password page.
     }
 });

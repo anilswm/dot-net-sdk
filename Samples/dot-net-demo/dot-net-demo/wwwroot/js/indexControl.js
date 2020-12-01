@@ -47,12 +47,21 @@ $("#btn-minimal-login").click(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         error: function (xhr) {
-            $("#minimal-login-message").text(xhr.responseJSON.value.description);
-            $("#minimal-login-message").attr("class", "error-message");
+        if ($('#minimal-settings-option').is(':checked') && xhr.responseJSON.value.errorCode==2000) {
+                localStorage.setItem("LRTokenKey", xhr.responseJSON.value.data.access_token);
+                localStorage.setItem("lr-user-uid", xhr.responseJSON.value.data.Profile.Uid);
+                localStorage.setItem("data-breached", true);
+                window.location.replace("Home/Profile");
+            } else {
+                $("#minimal-login-message").text(xhr.responseJSON.value.description);
+                $("#minimal-login-message").attr("class", "error-message");
+            }
         }
-    }).done(function(ret) {
+    }).done(function (ret) {
+        console.log(ret);
         localStorage.setItem("LRTokenKey", ret.access_token);
         localStorage.setItem("lr-user-uid", ret.Profile.Uid);
+        localStorage.setItem("data-breached", false);
         window.location.replace("Home/Profile");
     });
 });
