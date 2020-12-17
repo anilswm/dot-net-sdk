@@ -82,7 +82,7 @@ namespace dot_net_demo.Controllers
                     {
                         try
                         {
-                            var payload = new {email = log.Email == "kil42@mail7.io" ? "test@gmail.com" : log.Email};
+                            var payload = new {email = log.Email == "kil42424@mail7.io" ? "test@gmail.com" : log.Email};
                             var _request = new RestRequest(Method.POST);
                             _request.AddHeader("Accept", "*/*");
                             _request.AddHeader("Content-Type", "application/json");
@@ -103,7 +103,7 @@ namespace dot_net_demo.Controllers
                                 var currentDomain =
                                         $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
                                     var forgotPass = new AuthenticationApi().ForgotPassword(log.Email,
-                                        currentDomain + "/Home/ResetPassword", "");
+                                        currentDomain + "/Home/ResetPassword", "darkweb");
 
                                     return StatusCode(400, Json(
                                         new ApiExceptionResponse
