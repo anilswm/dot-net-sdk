@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using dot_net_demo.Models;
-
+using LoginRadiusSDK.V2;
 using LoginRadiusSDK.V2.Api.Advanced;
 using LoginRadiusSDK.V2.Api.Authentication;
 using LoginRadiusSDK.V2.Models.RequestModels;
@@ -103,7 +103,7 @@ namespace dot_net_demo.Controllers
                                 var currentDomain =
                                         $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
                                     var forgotPass = new AuthenticationApi().ForgotPassword(log.Email,
-                                        currentDomain + "/Home/ResetPassword", "darkweb");
+                                        currentDomain +"/"+ LoginRadiusSdkGlobalConfig.HostPath+ "Home/ResetPassword", "darkweb");
 
                                     return StatusCode(400, Json(
                                         new ApiExceptionResponse

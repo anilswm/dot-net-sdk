@@ -10,6 +10,9 @@ namespace LoginRadiusSDK.V2
         public static int RequestRetries { get; set; }
         public static string ApiRegion { get; set; }
 
+
+        public static string _hostPath { get; set; }
+
         private static string _apiKey;
 
         public static string ApiKey
@@ -22,6 +25,18 @@ namespace LoginRadiusSDK.V2
                     : _apiKey;
             }
             set { _apiKey = value; }
+        }
+
+        public static string HostPath
+        {
+            get
+            {
+
+                return string.IsNullOrWhiteSpace(_hostPath) && LoginRadiusResource.ConfigDictionary != null
+                    ? LoginRadiusResource.ConfigDictionary[LRConfigConstants.HostPath]
+                    : _hostPath;
+            }
+            set { _hostPath = value; }
         }
 
         public static string ApiSecret { get; set; }

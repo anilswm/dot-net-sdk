@@ -2,7 +2,6 @@ let multiFactorAuthToken;
 
 let m_options;
 
-
 let custom_interface_option = {};
 custom_interface_option.templateName = 'loginradiuscustom_tmpl';
 LRObject.util.ready(function() {
@@ -14,7 +13,7 @@ sl_options.onSuccess = function(response) {
     console.log(response);
     localStorage.setItem("LRTokenKey", response.access_token);
     localStorage.setItem("lr-user-uid", response.Profile.Uid);
-    window.location.replace("Home/Profile");
+    window.location.replace(hostPath +"Home/Profile");
 };
 sl_options.onError = function (errors) {
     $("#social-login-message").text(errors[0].Description);
@@ -43,7 +42,7 @@ $("#btn-minimal-login").click(function () {
     $.ajax({
         method: "POST",
         data: JSON.stringify(data),
-        url: m_options.loginUrl,
+        url:  hostPath + m_options.loginUrl,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         error: function (xhr) {
@@ -51,7 +50,7 @@ $("#btn-minimal-login").click(function () {
                 localStorage.setItem("LRTokenKey", xhr.responseJSON.value.data.access_token);
                 localStorage.setItem("lr-user-uid", xhr.responseJSON.value.data.Profile.Uid);
                 localStorage.setItem("data-breached", true);
-                window.location.replace("Home/Profile");
+            window.location.replace(hostPath+"Home/Profile");
             } else {
                 $("#minimal-login-message").text(xhr.responseJSON.value.description);
                 $("#minimal-login-message").attr("class", "error-message");
@@ -62,7 +61,7 @@ $("#btn-minimal-login").click(function () {
         localStorage.setItem("LRTokenKey", ret.access_token);
         localStorage.setItem("lr-user-uid", ret.Profile.Uid);
         localStorage.setItem("data-breached", false);
-        window.location.replace("Home/Profile");
+        window.location.replace(hostPath+"Home/Profile");
     });
 });
 
@@ -177,7 +176,7 @@ $("#btn-minimal-signup").click(function () {
 
     $.ajax({
         method: "POST",
-        url: m_options.registerUrl + "?verification_url=" + commonOptions.emailVerify,
+        url: hostPath.substring(0, hostPath.length - 1) + m_options.registerUrl + "?verification_url=" + commonOptions.emailVerify,
         data: JSON.stringify(data),
         contentType: "application/json",
         error: function (xhr) {
@@ -206,7 +205,7 @@ $("#btn-minimal-forgotpassword").click(function () {
     $.ajax({
         method: "POST",
         data: JSON.stringify(data),
-        url: m_options.forgotPasswordUrl + "?reset_password_url=" + commonOptions.resetPassword,
+        url: hostPath.substring(0, hostPath.length - 1) + m_options.forgotPasswordUrl + "?reset_password_url=" + commonOptions.resetPassword,
         contentType: "application/json",
         error: function(xhr){
             $("#minimal-forgotpassword-message").text(xhr.responseJSON.value.description);

@@ -168,6 +168,11 @@ namespace LoginRadiusSDK.V2
                : LoginRadiusSdkGlobalConfig.ApiRegion;
             _configValues.TryAdd(LRConfigConstants.ApiRegion, valStr);
 
+            valStr = string.IsNullOrWhiteSpace(LoginRadiusSdkGlobalConfig.HostPath)
+                ? _sdkConfigHandler.Setting(LRConfigConstants.HostPath)
+                : LoginRadiusSdkGlobalConfig.HostPath;
+            _configValues.TryAdd(LRConfigConstants.HostPath, valStr);
+
             return _configValues;
         }
     }
