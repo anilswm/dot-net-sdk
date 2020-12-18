@@ -9,7 +9,7 @@ let verificationFunc = function () {
         if (paramsObj.vtype === "emailverification") {
             $.ajax({
                 method: "GET",
-                url: m_options.verifyEmailUrl + "?verification_token=" + paramsObj.vtoken,
+                url: hostPath.substring(0, hostPath.length - 1) + m_options.verifyEmailUrl + "?verification_token=" + paramsObj.vtoken,
                 contentType: "application/json",
                 error: function (xhr) {
                     $("#minimal-verification-message").text(xhr.responseJSON.value.description);
@@ -32,7 +32,7 @@ let verificationFunc = function () {
             }).done(function (ret) {
                 localStorage.setItem("LRTokenKey", ret.access_token);
                 localStorage.setItem("lr-user-uid", ret.Profile.Uid);
-                window.location.replace("/Home/Profile");
+                window.location.replace(hostPath +"/Home/Profile");
             });
         } else {
             window.location.replace("/");

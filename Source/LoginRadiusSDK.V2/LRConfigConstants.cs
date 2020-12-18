@@ -61,6 +61,8 @@
         /// </summary>
         public const string ApiRegion = "apiRegion";
 
+        public const string HostPath = "hostPath";
+
 
     }
 }
