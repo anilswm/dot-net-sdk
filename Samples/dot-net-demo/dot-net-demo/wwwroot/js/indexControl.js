@@ -36,9 +36,10 @@ $("#btn-minimal-login").click(function () {
         return;
     }
     data = {
-        "Email" : $("#minimal-login-email").val(),
-        "Password" : $("#minimal-login-password").val()
-    }
+        "Email": $("#minimal-login-email").val(),
+        "Password": $("#minimal-login-password").val(),
+        "OptionalDarkWeb": $('#minimal-settings-option').is(':checked')
+}
     $.ajax({
         method: "POST",
         data: JSON.stringify(data),

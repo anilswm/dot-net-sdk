@@ -100,10 +100,13 @@ namespace dot_net_demo.Controllers
                                 var setCheckBreach =
                                     new AuthenticationApi().UpdateProfileByAccessToken(
                                         apiresponse.Response.Access_Token.ToString(), updatemodel);
+                                var templateName = emailLoginModel.OptionalDarkWeb
+                                    ? LoginRadiusSdkGlobalConfig.OptionalDarkWebTemplate
+                                    : LoginRadiusSdkGlobalConfig.RequiredDarkWebTemplate;
                                 var currentDomain =
                                         $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
                                     var forgotPass = new AuthenticationApi().ForgotPassword(log.Email,
-                                        currentDomain +"/"+ LoginRadiusSdkGlobalConfig.HostPath+ "Home/ResetPassword", "darkweb");
+                                        currentDomain +"/"+ LoginRadiusSdkGlobalConfig.HostPath+ "Home/ResetPassword", templateName);
 
                                     return StatusCode(400, Json(
                                         new ApiExceptionResponse

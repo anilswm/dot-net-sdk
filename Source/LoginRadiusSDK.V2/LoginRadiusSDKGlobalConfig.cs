@@ -13,6 +13,10 @@ namespace LoginRadiusSDK.V2
 
         public static string _hostPath { get; set; }
 
+        public static string _optionalDarkWebTemplate { get; set; }
+
+        public static string _requiredDarkWebTemplate { get; set; }
+
         private static string _apiKey;
 
         public static string ApiKey
@@ -38,6 +42,29 @@ namespace LoginRadiusSDK.V2
             }
             set { _hostPath = value; }
         }
+        public static string OptionalDarkWebTemplate
+        {
+            get
+            {
+
+                return string.IsNullOrWhiteSpace(_optionalDarkWebTemplate) && LoginRadiusResource.ConfigDictionary != null
+                    ? LoginRadiusResource.ConfigDictionary[LRConfigConstants.OptionalDarkWebTemplate]
+                    : _optionalDarkWebTemplate;
+            }
+            set { _optionalDarkWebTemplate = value; }
+        }
+        public static string RequiredDarkWebTemplate
+        {
+            get
+            {
+
+                return string.IsNullOrWhiteSpace(_requiredDarkWebTemplate) && LoginRadiusResource.ConfigDictionary != null
+                    ? LoginRadiusResource.ConfigDictionary[LRConfigConstants.RequiredDarkWebTemplate]
+                    : _requiredDarkWebTemplate;
+            }
+            set { _requiredDarkWebTemplate = value; }
+        }
+
 
         public static string ApiSecret { get; set; }
         public static string ApiRequestSigning { get; set; }

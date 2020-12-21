@@ -62,6 +62,8 @@
         public const string ApiRegion = "apiRegion";
 
         public const string HostPath = "hostPath";
+        public const string OptionalDarkWebTemplate = "optionalDarkWebTemplate";
+        public const string RequiredDarkWebTemplate = "requiredDarkWebTemplate";
 
 
     }
