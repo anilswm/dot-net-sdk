@@ -173,6 +173,16 @@ namespace LoginRadiusSDK.V2
                 : LoginRadiusSdkGlobalConfig.HostPath;
             _configValues.TryAdd(LRConfigConstants.HostPath, valStr);
 
+            valStr = string.IsNullOrWhiteSpace(LoginRadiusSdkGlobalConfig.OptionalDarkWebTemplate)
+                ? _sdkConfigHandler.Setting(LRConfigConstants.OptionalDarkWebTemplate)
+                : LoginRadiusSdkGlobalConfig.OptionalDarkWebTemplate;
+            _configValues.TryAdd(LRConfigConstants.OptionalDarkWebTemplate, valStr);
+
+            valStr = string.IsNullOrWhiteSpace(LoginRadiusSdkGlobalConfig.RequiredDarkWebTemplate)
+                ? _sdkConfigHandler.Setting(LRConfigConstants.RequiredDarkWebTemplate)
+                : LoginRadiusSdkGlobalConfig.RequiredDarkWebTemplate;
+            _configValues.TryAdd(LRConfigConstants.RequiredDarkWebTemplate, valStr);
+
             return _configValues;
         }
     }
