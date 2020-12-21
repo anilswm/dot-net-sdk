@@ -17,7 +17,7 @@ $("#btn-user-changepassword").click(function () {
     }
     $.ajax({
         method: "PUT",
-        url: hostPath.substring(0, hostPath.length - 1) + m_options.changePasswordUrl + "?auth=" + localStorage.getItem("LRTokenKey"),
+        url: hostPath + m_options.changePasswordUrl + "?auth=" + localStorage.getItem("LRTokenKey"),
         data: JSON.stringify(data),
         contentType: "application/json",
         error: function(xhr) {
@@ -45,7 +45,7 @@ $("#btn-user-setpassword").click(function () {
     }
     $.ajax({
         method: "PUT",
-        url: hostPath.substring(0, hostPath.length - 1) + m_options.setPasswordUrl + "?uid=" + localStorage.getItem("lr-user-uid"),
+        url: hostPath + m_options.setPasswordUrl + "?uid=" + localStorage.getItem("lr-user-uid"),
         data: JSON.stringify(data),
         contentType: "application/json",
         error: function(xhr){
@@ -87,7 +87,7 @@ $("#btn-user-updateaccount").click(function() {
 
     $.ajax({
         method: "PUT",
-        url: hostPath.substring(0, hostPath.length - 1) + m_options.updateUrl + "?uid=" + localStorage.getItem("lr-user-uid"),
+        url: hostPath+ m_options.updateUrl + "?uid=" + localStorage.getItem("lr-user-uid"),
         data: JSON.stringify(data),
         contentType: "application/json",
         error: function(xhr) {
@@ -335,7 +335,7 @@ let profileUpdate = function() {
 
     $.ajax({
         method: "GET",
-        url: hostPath.substring(0, hostPath.length - 1) + m_options.getProfileUrl + "?auth=" + localStorage.getItem("LRTokenKey"),
+        url: hostPath + m_options.getProfileUrl + "?auth=" + localStorage.getItem("LRTokenKey"),
         error: function(){
             localStorage.removeItem("LRTokenKey");
             localStorage.removeItem("lr-user-uid");

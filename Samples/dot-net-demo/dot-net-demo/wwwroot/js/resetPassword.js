@@ -23,7 +23,7 @@ $("#btn-minimal-resetpassword").click(function () {
   $.ajax({
       method: "PUT",
       data: JSON.stringify(data),
-      url: hostPath.substring(0, hostPath.length - 1) + m_options.resetPasswordEmailUrl,
+      url: hostPath + m_options.resetPasswordEmailUrl,
       contentType: "application/json; charset=utf-8",
       error: function(xhr) {
           $("#minimal-resetpassword-message").text(xhr.responseJSON.value.description);

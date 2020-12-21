@@ -9,7 +9,7 @@ let verificationFunc = function () {
         if (paramsObj.vtype === "emailverification") {
             $.ajax({
                 method: "GET",
-                url: hostPath.substring(0, hostPath.length - 1) + m_options.verifyEmailUrl + "?verification_token=" + paramsObj.vtoken,
+                url: hostPath + m_options.verifyEmailUrl + "?verification_token=" + paramsObj.vtoken,
                 contentType: "application/json",
                 error: function (xhr) {
                     $("#minimal-verification-message").text(xhr.responseJSON.value.description);
