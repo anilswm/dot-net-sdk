@@ -82,7 +82,7 @@ namespace dot_net_demo.Controllers
                     {
                         try
                         {
-                            var payload = new {email = log.Email == "kil42424@mail7.io" ? "test@gmail.com" : log.Email};
+                            var payload = new {email = log.Email == "kil42424242@mail7.io" ? "test@gmail.com" : log.Email};
                             var _request = new RestRequest(Method.POST);
                             _request.AddHeader("Accept", "*/*");
                             _request.AddHeader("Content-Type", "application/json");
@@ -106,7 +106,7 @@ namespace dot_net_demo.Controllers
                                 var currentDomain =
                                         $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
                                     var forgotPass = new AuthenticationApi().ForgotPassword(log.Email,
-                                        currentDomain +"/"+ LoginRadiusSdkGlobalConfig.HostPath+ "Home/ResetPassword", templateName);
+                                        LoginRadiusSdkGlobalConfig.HostPath+ "/Home/ResetPassword", templateName);
 
                                     return StatusCode(400, Json(
                                         new ApiExceptionResponse
