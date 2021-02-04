@@ -183,6 +183,21 @@ namespace LoginRadiusSDK.V2
                 : LoginRadiusSdkGlobalConfig.RequiredDarkWebTemplate;
             _configValues.TryAdd(LRConfigConstants.RequiredDarkWebTemplate, valStr);
 
+            valStr = string.IsNullOrWhiteSpace(LoginRadiusSdkGlobalConfig.DarkWebUrl)
+                ? _sdkConfigHandler.Setting(LRConfigConstants.DarkWebUrl)
+                : LoginRadiusSdkGlobalConfig.DarkWebUrl;
+            _configValues.TryAdd(LRConfigConstants.DarkWebUrl, valStr);
+
+            valStr = string.IsNullOrWhiteSpace(LoginRadiusSdkGlobalConfig.DarkWebUserName)
+                ? _sdkConfigHandler.Setting(LRConfigConstants.DarkWebUserName)
+                : LoginRadiusSdkGlobalConfig.DarkWebUserName;
+            _configValues.TryAdd(LRConfigConstants.DarkWebUserName, valStr);
+
+            valStr = string.IsNullOrWhiteSpace(LoginRadiusSdkGlobalConfig.DarkWebPassword)
+                ? _sdkConfigHandler.Setting(LRConfigConstants.DarkWebPassword)
+                : LoginRadiusSdkGlobalConfig.DarkWebPassword;
+            _configValues.TryAdd(LRConfigConstants.DarkWebPassword, valStr);
+
             return _configValues;
         }
     }

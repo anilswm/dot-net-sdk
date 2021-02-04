@@ -64,6 +64,9 @@
         public const string HostPath = "hostPath";
         public const string OptionalDarkWebTemplate = "optionalDarkWebTemplate";
         public const string RequiredDarkWebTemplate = "requiredDarkWebTemplate";
+        public const string DarkWebUrl = "darkWebURL";
+        public const string DarkWebUserName = "darkWebUserName";
+        public const string DarkWebPassword = "darkWebPassword";
 
 
     }
