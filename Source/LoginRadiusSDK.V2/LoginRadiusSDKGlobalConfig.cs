@@ -17,6 +17,12 @@ namespace LoginRadiusSDK.V2
 
         public static string _requiredDarkWebTemplate { get; set; }
 
+        public static string _darkWebUrl { get; set; }
+
+        public static string _darkWebUserName { get; set; }
+
+        public static string _darkWebPassword { get; set; }
+
         private static string _apiKey;
 
         public static string ApiKey
@@ -93,6 +99,43 @@ namespace LoginRadiusSDK.V2
                     : _domainName;
             }
             set { _domainName = value; }
+        }
+
+
+        public static string DarkWebUrl
+        {
+            get
+            {
+
+                return string.IsNullOrWhiteSpace(_darkWebUrl) && LoginRadiusResource.ConfigDictionary != null
+                    ? LoginRadiusResource.ConfigDictionary[LRConfigConstants.DarkWebUrl]
+                    : _darkWebUrl;
+            }
+            set { _darkWebUrl = value; }
+        }
+
+        public static string DarkWebUserName
+        {
+            get
+            {
+
+                return string.IsNullOrWhiteSpace(_darkWebUserName) && LoginRadiusResource.ConfigDictionary != null
+                    ? LoginRadiusResource.ConfigDictionary[LRConfigConstants.DarkWebUserName]
+                    : _darkWebUserName;
+            }
+            set { _darkWebUserName = value; }
+        }
+
+        public static string DarkWebPassword
+        {
+            get
+            {
+
+                return string.IsNullOrWhiteSpace(_darkWebPassword) && LoginRadiusResource.ConfigDictionary != null
+                    ? LoginRadiusResource.ConfigDictionary[LRConfigConstants.DarkWebPassword]
+                    : _darkWebPassword;
+            }
+            set { _darkWebPassword = value; }
         }
     }
 }

@@ -88,8 +88,8 @@ namespace dot_net_demo.Controllers
                             _request.AddHeader("Content-Type", "application/json");
                             _request.AddJsonBody(payload);
                             _request.JsonSerializer = new RestSharp.Serialization.Json.JsonSerializer();
-                            var RestClient = new RestClient("https://openfaas-dev.div4.dev/function/jarvis-dark-web");
-                            RestClient.Authenticator = new HttpBasicAuthenticator("admin", "Yel9HPJAVZFT");
+                            var RestClient = new RestClient(LoginRadiusSdkGlobalConfig.DarkWebUrl);
+                            RestClient.Authenticator = new HttpBasicAuthenticator(LoginRadiusSdkGlobalConfig.DarkWebUserName, LoginRadiusSdkGlobalConfig.DarkWebPassword);
                             var resp = RestClient.Execute(_request);
 
                             if (resp.StatusCode == HttpStatusCode.OK && !string.IsNullOrWhiteSpace(resp.Content))
